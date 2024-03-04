@@ -18,10 +18,11 @@ Route::get('/', 'MainController@home')->name('home');
 
 Route::get('/registration', 'MainController@registration')->name('registration');
 
+Route::post('/dashboard/add_task', 'MainController@add_task')->name('add');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard', 'MainController@list_tasks')->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', 'MainController@list_employees')->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
