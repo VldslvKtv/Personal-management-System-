@@ -47,6 +47,9 @@
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('home')">
+                                {{ __('На главную') }}
+                            </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
@@ -94,6 +97,9 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                <x-responsive-nav-link :href="route('home')">
+                    {{ __('На главную') }}
+                </x-responsive-nav-link>
             </div>
         </div>
     </div>

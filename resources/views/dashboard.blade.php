@@ -1,6 +1,7 @@
 <style>
     .form-container {
       position: relative;
+      margin-top: 20px;
       top: 20%;
       left: 57.5%;
       transform: translate(-50%, -10%);
@@ -8,6 +9,7 @@
       z-index: 1000; /* Больше, чем у overlay */
     }
 </style>
+@if ($user_status == 1)
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -33,40 +35,41 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Список отправленных задач:") }}<br>
-                    @foreach ($records as $t)
-                    <div class="alert alert-warning">
-                        <h3>{{ $t->task }}</h3>
-                    </div>
+                    {{ __("Отчеты сотрудников:") }}<br>
+                    @foreach($files as $file)
+                        <li><a href="{{ asset($file->path) }}" download>{{ $file->name }}</a></li>
                     @endforeach
-                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    {{ __("Список отправленных задач:") }}<br>
+                    @foreach ($users_and_tasks as $user)
+                    <h2>{{ $user->name }}</h2>
+                        <ul>
+                            @foreach ($user->tasks as $t)
+                                <li>{{ $t->task }}</li>
+                            @endforeach
+                        </ul>
+                    @endforeach
             </div>
         </div>
     </div>
 
-    {{-- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="divide-y divide-slate-100"> --}}
-                        {{-- <form>
-                            <label for="date">Дата:</label>
-                            <input type="date" id="date" name="date"><br>
-
-                            <label for="text">Задача:</label>
-                            <input type="text" id="text" name="text"><br>
-
-                            <label for="datetime">Дэдлайн:</label>
-                            <input type="datetime-local" id="datetime" name="datetime"><br>
-                            
-                            <input type="submit" value="Отправить">
-                        </form> --}}
                         <div class="form-container">
                             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                                 <!-- Session Status -->
                            
                         <form method="post" action="/dashboard/add_task">
                             @csrf
+                            @if(Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif <br>
                             {{-- @method('post') --}}
                             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                                 {{ __('Добавить задачу') }}
@@ -105,12 +108,8 @@
                         </form>
                         </div>
                         </div>
-                            {{-- </div>
-                      </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     
-
 </x-app-layout>
+@else
+    @include('about')
+@endif

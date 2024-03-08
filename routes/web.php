@@ -20,7 +20,7 @@ Route::get('/registration', 'MainController@registration')->name('registration')
 
 Route::post('/dashboard/add_task', 'MainController@add_task')->name('add');
 
-//Route::get('/dashboard', 'MainController@list_tasks')->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/dashboard/uploadFile', 'FileController@uploadFile')->name('uploadFile');
 
 Route::get('/dashboard', 'MainController@list_employees')->middleware(['auth', 'verified'])->name('dashboard');
 

@@ -25,6 +25,16 @@ class User extends Authenticatable
         'status'
     ];
 
+    public function tasks()
+    {
+        return $this->hasMany(Tasks::class);
+    }
+
+    public function report_files()
+    {
+        return $this->hasMany(ReportFiles::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

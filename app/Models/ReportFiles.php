@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Tasks extends Model
+class ReportFiles extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public $timestamps = false;
+    protected $table = 'report_files';
 
     protected $fillable = [
-        'task',
-        'create_date',
-        'deadline' 
+        'name',
+        'path',
+        'user_id'
     ];
-
-    
 }
