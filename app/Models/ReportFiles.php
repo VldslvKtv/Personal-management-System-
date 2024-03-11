@@ -21,6 +21,8 @@ class ReportFiles extends Model
     protected $fillable = [
         'name',
         'path',
-        'user_id'
+        'user_id',
+        'extension',
+        'sender'
     ];
 }

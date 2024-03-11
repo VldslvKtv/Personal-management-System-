@@ -120,7 +120,7 @@
                     </div>
                     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto margin-top: 20px;" style="margin-top: 20px;">
                         <a class="me-3 py-2 link-body-emphasis text-decoration-none text-white" href="/">Главная</a>
-                        <a class="me-3 py-2 link-body-emphasis text-decoration-none text-white" href="/registration">Дополнительно</a>
+                        
                         <a class="me-3 py-2 link-body-emphasis text-decoration-none text-white" href="/register">Регистрация</a>
                         <a href="/login" class="nav-link active text-white" aria-current="page">Вход</a>
                     </nav>

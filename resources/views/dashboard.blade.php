@@ -37,7 +37,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Отчеты сотрудников:") }}<br>
                     @foreach($files as $file)
-                        <li><a href="{{ asset($file->path) }}" download>{{ $file->name }}</a></li>
+                        <li><a href="{{ asset($file->path) }}" download>{{ $file->name }}</a> ({{ $file->extension }}) - от: {{ $file->sender }}</li>
                     @endforeach
             </div>
         </div>
@@ -49,11 +49,11 @@
                     {{ __("Список отправленных задач:") }}<br>
                     @foreach ($users_and_tasks as $user)
                     <h2>{{ $user->name }}</h2>
-                        <ul>
+                        
                             @foreach ($user->tasks as $t)
                                 <li>{{ $t->task }}</li>
                             @endforeach
-                        </ul>
+                        
                     @endforeach
             </div>
         </div>
