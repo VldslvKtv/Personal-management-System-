@@ -8,6 +8,10 @@
       padding: 20px;
       z-index: 1000; /* Больше, чем у overlay */
     }
+    .j1
+    {
+        margin-top: 20px;  
+    }
 </style>
 @if ($user_status == 1)
 <x-app-layout>
@@ -42,6 +46,7 @@
             </div>
         </div>
     </div>
+    <div class="j1">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -58,6 +63,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 
                         <div class="form-container">
                             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
@@ -74,8 +81,6 @@
                             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                                 {{ __('Добавить задачу') }}
                             </h2><br>
-                        {{-- <input type="hidden" name="_token" value="Kk0z9aGFWkgNveDFwZ2TNfjsdlyxNVv8m6TOyf1I" autocomplete="off"> --}}
-                        <!-- дата -->
                         <div>
                             <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="fio">
                         ФИО получателя

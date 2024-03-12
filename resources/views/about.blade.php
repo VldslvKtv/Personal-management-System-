@@ -1,4 +1,15 @@
 <x-app-layout>
+    <style>
+    ol {
+        list-style-type: decimal;
+    }
+    .bias
+    {
+        margin-left: 15px;
+    }
+    </style>
+    
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Панель сотрудника') }}
@@ -28,11 +39,13 @@
                     <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                         {{ __('Ваши задачи:') }}
                     </h1><br>
+                    <ol>
+                    <div class="bias">
                     @foreach ($tasks_current_user as $t)
-                        <ul>
                             <li>{{ $t->task }}</li>
-                        </ul>
                     @endforeach
+                    </div>
+                    </ol>
             </div>
         </div>
     </div>
